@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-	root	'dynamic_pages#home'
 
-	match '/hackday',	to: 'dynamic_pages#hackday',	via: 'get'
+	resources :hackdays do
+		resources :hacks
+	end
 
-	match	'/create',	to:	'dynamic_pages#create',	via:	'get'
 
-  get 'dynamic_pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
