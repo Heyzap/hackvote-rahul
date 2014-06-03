@@ -5,6 +5,6 @@ class DynamicPagesController < ApplicationController
   def hackday
   end
 
-	def create
-	end
+  def create
+  end
 end
