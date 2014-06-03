@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-	resources :hackdays do
-		resources :hacks
-	end
+  resources :hackdays do
+    resources :hacks
+  end
 
-	root to: "hackdays#index"
+  root to: "hackdays#index"
 
 
 

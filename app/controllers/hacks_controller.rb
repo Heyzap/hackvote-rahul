@@ -1,37 +1,37 @@
 class HacksController < ApplicationController
   before_filter :find_hackday
 
-	def index
-		@hacks = @hackday.hacks.all
-	end
-	
-	def find_hackday
-		@hackday = Hackday.find_by_id(params[:hackday_id])
-	end
-
-	def show
-		@hack = @hackday.hacks.find_by_id(params[:id])
-	end
-
-  def new
-		@hack = @hackday.hacks.new
+  def index
+    @hacks = @hackday.hacks.all
+  end
+  
+  def find_hackday
+    @hackday = Hackday.find_by_id(params[:hackday_id])
   end
 
-	def create
-		@hack = @hackday.hacks.new(hack_params)
-		if @hack.save
-			redirect_to hackday_hacks_path
-		else
-			render 'new'
-		end
-	end
+  def show
+    @hack = @hackday.hacks.find_by_id(params[:id])
+  end
 
-	def update
-		raise "In hacks controller"
-	end
+  def new
+    @hack = @hackday.hacks.new
+  end
 
-	private
-	def hack_params
-		params.require(:hack).permit(:title, :people)
-	end
+  def create
+    @hack = @hackday.hacks.new(hack_params)
+    if @hack.save
+      redirect_to hackday_hacks_path
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    raise "In hacks controller"
+  end
+
+  private
+  def hack_params
+    params.require(:hack).permit(:title, :people)
+  end
 end

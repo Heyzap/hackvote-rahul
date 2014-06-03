@@ -2,20 +2,20 @@
 
 <div class="row">
   <div class="span6 offset3">
-		<center>
-   	 <%= form_for [@hackday, @hack] do |f| %>
-	 	 	<%= render 'shared/error_messages' %>
+    <center>
+     <%= form_for [@hackday, @hack] do |f| %>
+      <%= render 'shared/error_messages' %>
 
-   	   <%= f.label :title %>
-   	   <%= f.text_field :title %>
+       <%= f.label :title %>
+       <%= f.text_field :title %>
 
-   	   <%= f.label :people %>
-   	   <%= f.text_field :people %>
-	 	 	
-	 	 	<p>
-   	   	<%= f.submit "Create hack!", class: "btn btn-large btn-primary" %>
-	 	 	</p>
-   	 <% end %>
-		</center>
+       <%= f.label :people %>
+       <%= f.text_field :people %>
+      
+      <p>
+        <%= f.submit "Create hack!", class: "btn btn-large btn-primary" %>
+      </p>
+     <% end %>
+    </center>
   </div>
 </div>
