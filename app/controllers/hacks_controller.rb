@@ -27,6 +27,9 @@ class HacksController < ApplicationController
 		end
 	end
 
+	def update
+		raise "In hacks controller"
+	end
 
 	private
 	def hack_params

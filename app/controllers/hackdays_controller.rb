@@ -1,4 +1,6 @@
 class HackdaysController < ApplicationController
+	before_filter :set_votes
+
   def new
 		@hackday = Hackday.new
   end
@@ -21,18 +23,16 @@ class HackdaysController < ApplicationController
 	end
 
 	def update
-		@hackday = Hackday.find(params[:id])
-		if params[:radioButton]
-			@hack = @hack.find_by_id(params[:radioButton])
-			if get_num_votes(@hackday) > 0
-				decrease_votes(@hackday)
-				@hack.votes = @hack.votes + 1
-				@hack.save
-			else
-				flash[:error] = "Error. You have no votes left"
-			end
+		@hack = Hack.find_by_title(params[:votes])
+		if get_num_votes(@hackday) > 0
+			decrease_votes(@hackday)
+			@hack.votes = @hack.votes + 1
+			@hack.save
+		else
+			#redirect_to hackday_path, :flash => { :error => "You've voted" }
 		end
-		redirect_to hackday_hacks_path
+		redirect_to hackday_hacks_path(@hackday)
+		#redirect_to hackday_hacks_path(@hackday)
 	end
 
 	private
@@ -44,11 +44,16 @@ class HackdaysController < ApplicationController
 	end
 
 	def get_num_votes(hackday)
-
+		return session[:votes]
 	end
 
 	def decrease_votes(hackday)
-
+		@votes = session[:votes]
+		@votes -= 1
+		session[:votes] = @votes
 	end
 
+	def set_votes
+		session[:votes] ||= NUM_VOTES
+	end
 end
