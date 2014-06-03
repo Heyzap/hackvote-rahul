@@ -28,11 +28,11 @@ class HackdaysController < ApplicationController
 			decrease_votes(@hackday)
 			@hack.votes = @hack.votes + 1
 			@hack.save
+			flash[:success] = "Thanks you for voting"
 		else
-			#redirect_to hackday_path, :flash => { :error => "You've voted" }
+			flash[:error] = "You have already voted 3 times"
 		end
-		redirect_to hackday_hacks_path(@hackday)
-		#redirect_to hackday_hacks_path(@hackday)
+		redirect_to hackday_hacks_path(params[:id])
 	end
 
 	private
