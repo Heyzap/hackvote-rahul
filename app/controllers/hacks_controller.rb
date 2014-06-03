@@ -1,17 +1,16 @@
 class HacksController < ApplicationController
-	before_filter :find_hackday
+  before_filter :find_hackday
 
 	def index
 		@hacks = @hackday.hacks.all
 	end
 	
 	def find_hackday
-		@hackday = Hackday.find(params[:hackday_id])
+		@hackday = Hackday.find_by_id(params[:hackday_id])
 	end
 
 	def show
-		@hack = @hackday.hacks.find(params[:id])
-		puts @hack
+		@hack = @hackday.hacks.find_by_id(params[:id])
 	end
 
   def new

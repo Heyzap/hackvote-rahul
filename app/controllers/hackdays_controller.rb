@@ -19,7 +19,7 @@ class HackdaysController < ApplicationController
 	end
 
 	def show
-		@hackday = Hackday.find(params[:id])
+		@hackday = Hackday.find_by_id(params[:id])
 	end
 
 	def update
