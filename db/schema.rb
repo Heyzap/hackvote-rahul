@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602223511) do
+ActiveRecord::Schema.define(version: 20140603004518) do
 
   create_table "hackdays", force: true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140602223511) do
     t.string   "people"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "hackday_id"
   end
 
 end

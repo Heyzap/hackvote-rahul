@@ -10,7 +10,7 @@ class HackdaysController < ApplicationController
 	def create
 		@hackday = Hackday.new(hackday_params)
 		if @hackday.save
-			redirect_to @hackdays
+			redirect_to hackdays_path
 		else
 			render 'new'
 		end

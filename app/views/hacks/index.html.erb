@@ -1,3 +1,13 @@
 <h1> MAKE ME DYNAMIC HACKDAY HACKS </h1>
+<center>
+	<%= link_to "Add a new Hack", new_hackday_hack_path, class: "btn btn-large btn-primary" %>
+</center>
 <div class="row">
+	<% @hacks.each do |hack| %>
+		<p>
+			<center>
+				<%= hack.title + " by " + hack.people %>
+			</center>
+		</p>
+	<% end %>
 </div>

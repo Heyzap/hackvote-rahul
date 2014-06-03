@@ -2,23 +2,20 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@hack) do |f| %>
-			<%= render 'shared/error_messages' %>
+		<center>
+   	 <%= form_for [@hackday, @hack] do |f| %>
+	 	 	<%= render 'shared/error_messages' %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+   	   <%= f.label :title %>
+   	   <%= f.text_field :title %>
 
-      <%= f.label :people %>
-      <%= f.text_field :people %>
-
-      <%= f.submit "Create hack!", class: "btn btn-large btn-primary" %>
-    <% end %>
-	<div class = "row">
-		<p>
-			<strong> Title: </strong>
-			<%= @hack.title %>
-			<strong> Title should be before this </strong>
-		</p>
-	</div>
+   	   <%= f.label :people %>
+   	   <%= f.text_field :people %>
+	 	 	
+	 	 	<p>
+   	   	<%= f.submit "Create hack!", class: "btn btn-large btn-primary" %>
+	 	 	</p>
+   	 <% end %>
+		</center>
   </div>
 </div>

@@ -1,27 +1,32 @@
 class HacksController < ApplicationController
+	before_filter :find_hackday
+
+	def index
+		@hacks = @hackday.hacks.all
+	end
 	
+	def find_hackday
+		@hackday = Hackday.find(params[:hackday_id])
+	end
+
 	def show
-		@hack = Hack.find(params[:id])
+		@hack = @hackday.hacks.find(params[:id])
 		puts @hack
 	end
 
   def new
-		@hack = Hack.new
+		@hack = @hackday.hacks.new
   end
 
 	def create
-		#@hack = Hack.new(hack_params)
 		@hack = @hackday.hacks.new(hack_params)
 		if @hack.save
-			#do something 
+			redirect_to hackday_hacks_path
 		else
 			render 'new'
 		end
 	end
 
-	def index
-		@hack = Hack.all
-	end
 
 	private
 	def hack_params
