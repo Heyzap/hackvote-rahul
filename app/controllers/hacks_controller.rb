@@ -10,7 +10,8 @@ class HacksController < ApplicationController
   end
 
 	def create
-		@hack = Hack.new(hack_params)
+		#@hack = Hack.new(hack_params)
+		@hack = @hackday.hacks.new(hack_params)
 		if @hack.save
 			#do something 
 		else

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 		resources :hacks
 	end
 
+	root to: "hackdays#index"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
