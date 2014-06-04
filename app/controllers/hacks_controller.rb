@@ -5,10 +5,6 @@ class HacksController < ApplicationController
     @hacks = @hackday.hacks.all
   end
   
-  def find_hackday
-    @hackday = Hackday.find_by_id(params[:hackday_id])
-  end
-
   def show
     @hack = @hackday.hacks.find_by_id(params[:id])
   end
@@ -28,6 +24,11 @@ class HacksController < ApplicationController
 
   def update
     raise "In hacks controller"
+  end
+
+	protected
+  def find_hackday
+    @hackday = Hackday.find_by_id(params[:hackday_id])
   end
 
   private
