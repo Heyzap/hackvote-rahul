@@ -1,8 +1,7 @@
 class HackdaysController < ApplicationController
-#  before_filter :set_votes
 
   def index
-    @hackdays = Hackday.all
+    @hackdays = Hackday.all.reverse
   end
 
   def new
@@ -42,23 +41,7 @@ class HackdaysController < ApplicationController
 
   private
 
-  NUM_VOTES = 3
-
   def hackday_params
     params.require(:hackday).permit(:name)
   end
-
-  def get_num_votes(hackday)
-    return session[:votes]
-  end
-
-  def decrease_votes(hackday)
-    @votes = session[:votes]
-    @votes -= 1
-    session[:votes] = @votes
-  end
-
-#  def set_votes
-#    session[:votes] ||= NUM_VOTES
-#  end
 end

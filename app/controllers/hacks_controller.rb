@@ -45,6 +45,7 @@ class HacksController < ApplicationController
   def find_hackday
     @hackday = Hackday.find_by_id(params[:hackday_id])
 		set_votes(@hackday)
+		#set_votes
   end
 
   def get_num_votes(hackday)
@@ -57,8 +58,9 @@ class HacksController < ApplicationController
     session[:votes] = @votes
   end
 
-  def set_votes
-    session[:votes]["hackday.id"] ||= NUM_VOTES
+  def set_votes(hackday)
+    session[]["votes".to_i] ||= NUM_VOTES
+    #session[:votes] ||= NUM_VOTES
   end
 
   private
