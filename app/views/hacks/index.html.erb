@@ -9,7 +9,7 @@
     <p>
       <center>
         <%= radio_button_tag(:hack_id, hack.id) %>
-        <%= label_tag(:voters, hack.title + " by " + hack.people + " with " + hack.votes.to_s + " votes") %>
+        <%= label_tag(:voters, "#{hack.title} by #{hack.people} with #{hack.votes.to_s} votes") %>
       </center>
     </p>
   <% end %>

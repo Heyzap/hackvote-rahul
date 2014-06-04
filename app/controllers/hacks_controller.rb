@@ -59,7 +59,6 @@ class HacksController < ApplicationController
   end
 
   def set_votes
-    session[:hackday_id] = {}
-    session[:hackday_id][:votes] ||= NUM_VOTES
+    session[:hackday_id] = {:votes => NUM_VOTES}
   end
 end

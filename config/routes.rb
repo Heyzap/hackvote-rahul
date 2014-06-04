@@ -8,19 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-  #def define_hacks
-  # resources :hacks do
-  #   collection do
-  #     get :search
-  #   end
-  # end
-  #end
-
-# define_hacks
-# resources :hackdays do
-#   define_children
-# end
-#
   root to: "hackdays#index"
 
 
