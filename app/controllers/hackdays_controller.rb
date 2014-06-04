@@ -22,7 +22,7 @@ class HackdaysController < ApplicationController
     if @hackday
       return @hackday
     else
-      render :nothing => true, :status => 400
+      render :status => 400
     end
   end
 

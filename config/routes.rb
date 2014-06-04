@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :hackdays do
-    resources :hacks do
+    resources :hacks, :except => [:update] do
       collection do
         put 'submit_vote'
       end
