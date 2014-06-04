@@ -1,5 +1,5 @@
 class HacksController < ApplicationController
-  before_filter :find_hackday#, :set_votes
+  before_filter :find_hackday
 
   def index
     @hacks = @hackday.hacks.all
