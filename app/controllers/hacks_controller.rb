@@ -26,41 +26,41 @@ class HacksController < ApplicationController
     raise "In hacks controller"
   end
 
-	def submit_vote
+  def submit_vote
     @hack = Hack.find_by_id(params[:hack_id])
-		puts get_num_votes(@hackday).to_s + " GET_NUM_VOTES_VALUE"
+    puts get_num_votes(@hackday).to_s + " GET_NUM_VOTES_VALUE"
     if get_num_votes(@hackday) > 0
       decrease_votes(@hackday)
-			@hack.class.update_counters @hack.id, :votes => 1
+      @hack.class.update_counters @hack.id, :votes => 1
       @hack.save
       flash[:success] = "Thanks you for voting"
     else
       flash[:error] = "You have already voted 3 times"
     end
     redirect_to hackday_hacks_path(params[:hackday_id])
-	end
+  end
 
-	protected
+  protected
 
-	NUM_VOTES = 3
+  NUM_VOTES = 3
 
   def find_hackday
     @hackday = Hackday.find_by_id(params[:hackday_id])
   end
 
   def get_num_votes(hackday)
-		@votes = session[:hackday_id][:votes]
-		if (!@votes)
-			session[:hackday_id] = {}
-			session[:hackday_id][:votes] ||= NUM_VOTES
-		end
-		return session[:hackday_id][:votes]
+    @votes = session[:hackday_id][:votes]
+    if (!@votes)
+      session[:hackday_id] = {}
+      session[:hackday_id][:votes] ||= NUM_VOTES
+    end
+    return session[:hackday_id][:votes]
   end
 
   def decrease_votes(hackday)
-		@votes = session[:hackday_id][:votes]
-		@votes -=1
-  	session[:hackday_id][:votes] = @votes
+    @votes = session[:hackday_id][:votes]
+    @votes -=1
+    session[:hackday_id][:votes] = @votes
   end
 
   private

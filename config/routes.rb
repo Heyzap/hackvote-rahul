@@ -2,24 +2,24 @@ Rails.application.routes.draw do
 
   resources :hackdays do
     resources :hacks do
-			collection do
-				put 'submit_vote'
-			end
-		end
+      collection do
+        put 'submit_vote'
+      end
+    end
   end
 
-	#def define_hacks
-	#	resources :hacks do
-	#		collection do
-	#			get :search
-	#		end
-	#	end
-	#end
+  #def define_hacks
+  # resources :hacks do
+  #   collection do
+  #     get :search
+  #   end
+  # end
+  #end
 
-#	define_hacks
-#	resources :hackdays do
-#		define_children
-#	end
+# define_hacks
+# resources :hackdays do
+#   define_children
+# end
 #
   root to: "hackdays#index"
 

@@ -19,11 +19,11 @@ class HackdaysController < ApplicationController
 
   def show
     @hackday = Hackday.find_by_id(params[:id])
-		if @hackday
-			return @hackday
-		else
-			render :nothing => true, :status => 400
-		end
+    if @hackday
+      return @hackday
+    else
+      render :nothing => true, :status => 400
+    end
   end
 
   private
