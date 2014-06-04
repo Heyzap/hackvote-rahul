@@ -1,5 +1,5 @@
 class HackdaysController < ApplicationController
-  before_filter :set_votes
+#  before_filter :set_votes
 
   def index
     @hackdays = Hackday.all
@@ -28,10 +28,9 @@ class HackdaysController < ApplicationController
   end
 
   def update
-    @hack = Hack.find_by_title(params[:votes])
+    @hack = Hack.find_by_id(params[:hack_id])
     if get_num_votes(@hackday) > 0
       decrease_votes(@hackday)
-      #@hack.votes = @hack.votes + 1
 			@hack.class.update_counters @hack.id, :votes => 1
       @hack.save
       flash[:success] = "Thanks you for voting"
@@ -59,7 +58,7 @@ class HackdaysController < ApplicationController
     session[:votes] = @votes
   end
 
-  def set_votes
-    session[:votes] ||= NUM_VOTES
-  end
+#  def set_votes
+#    session[:votes] ||= NUM_VOTES
+#  end
 end

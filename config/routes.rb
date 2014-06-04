@@ -1,11 +1,27 @@
 Rails.application.routes.draw do
 
   resources :hackdays do
-    resources :hacks
+    resources :hacks do
+			collection do
+				put 'submit_vote'
+			end
+		end
   end
 
-  root to: "hackdays#index"
+	#def define_hacks
+	#	resources :hacks do
+	#		collection do
+	#			get :search
+	#		end
+	#	end
+	#end
 
+#	define_hacks
+#	resources :hackdays do
+#		define_children
+#	end
+#
+  root to: "hackdays#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
