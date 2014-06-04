@@ -1,5 +1,5 @@
 class HacksController < ApplicationController
-  before_filter :find_hackday
+  before_filter :find_hackday#, :set_votes
 
   def index
     @hacks = @hackday.hacks.all
@@ -28,6 +28,7 @@ class HacksController < ApplicationController
 
 	def submit_vote
     @hack = Hack.find_by_id(params[:hack_id])
+		puts get_num_votes(@hackday).to_s + " GET_NUM_VOTES_VALUE"
     if get_num_votes(@hackday) > 0
       decrease_votes(@hackday)
 			@hack.class.update_counters @hack.id, :votes => 1
@@ -42,25 +43,24 @@ class HacksController < ApplicationController
 	protected
 
 	NUM_VOTES = 3
+
   def find_hackday
     @hackday = Hackday.find_by_id(params[:hackday_id])
-		set_votes(@hackday)
-		#set_votes
   end
 
   def get_num_votes(hackday)
-    return session[:votes]
+		@votes = session[:hackday_id][:votes]
+		if (!@votes)
+			session[:hackday_id] = {}
+			session[:hackday_id][:votes] ||= NUM_VOTES
+		end
+		return session[:hackday_id][:votes]
   end
 
   def decrease_votes(hackday)
-    @votes = session[:votes]
-    @votes -= 1
-    session[:votes] = @votes
-  end
-
-  def set_votes(hackday)
-    session[]["votes".to_i] ||= NUM_VOTES
-    #session[:votes] ||= NUM_VOTES
+		@votes = session[:hackday_id][:votes]
+		@votes -=1
+  	session[:hackday_id][:votes] = @votes
   end
 
   private

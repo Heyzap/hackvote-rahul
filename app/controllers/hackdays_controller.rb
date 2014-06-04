@@ -26,19 +26,6 @@ class HackdaysController < ApplicationController
 		end
   end
 
-  def update
-    @hack = Hack.find_by_id(params[:hack_id])
-    if get_num_votes(@hackday) > 0
-      decrease_votes(@hackday)
-			@hack.class.update_counters @hack.id, :votes => 1
-      @hack.save
-      flash[:success] = "Thanks you for voting"
-    else
-      flash[:error] = "You have already voted 3 times"
-    end
-    redirect_to hackday_hacks_path(params[:id])
-  end
-
   private
 
   def hackday_params
