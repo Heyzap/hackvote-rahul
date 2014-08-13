@@ -1,0 +1,12 @@
+<% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HackDay Voting | <%= yield(:title) %></title>
+  </head>
+  <body>
+    <h1>HackDay List</h1>
+    <%= radio_button_tag(:age, "child") %>
+<%= label_tag(:age_child, "Test") %>
+  <body>
+</html>

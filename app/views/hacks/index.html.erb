@@ -1,0 +1,23 @@
+<% provide(:title, @hackday.name) %>
+<h1> <%=yield(:title) %> </h1>
+<center>
+  <%= link_to "Add a new Hack", new_hackday_hack_path, class: "btn btn-large btn-primary" %>
+</center>
+<div class="row">
+  <%= form_tag(submit_vote_hackday_hacks_path, :method => "put") do %>
+  <% @hacks.each do |hack| %>
+    <p>
+      <center>
+        <%= radio_button_tag(:hack_id, hack.id) %>
+        <%= label_tag(:voters, "#{hack.title} by #{hack.people} with #{hack.votes.to_s} votes") %>
+      </center>
+    </p>
+  <% end %>
+  <div>
+    <center>
+      <%= submit_tag "Vote", class: "btn btn-large btn-primary" %>
+    </center>
+  </div>
+  <% end %>
+</div>
+

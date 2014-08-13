@@ -1,0 +1,17 @@
+<h1>Create A New Hackday</h1>
+<div class "row">
+  <div class="span6 offset3">
+    <center>
+      <%= form_for(@hackday) do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        
+        <p>
+          <%= f.submit "Create new hackday!", class: "btn btn-large btn-primary" %>
+        </p>
+      <% end %>
+    </center>
+  </div>
+</div>
+

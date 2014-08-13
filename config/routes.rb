@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  get 'dynamic_pages/home'
 
-  get 'dynamic_pages/hackday'
+  resources :hackdays do
+    resources :hacks, :except => [:update] do
+      collection do
+        put 'submit_vote'
+      end
+    end
+  end
+
+  root to: "hackdays#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
